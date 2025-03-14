@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Финансовый трекер</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Личный Финансовый Трекер</h1>
+  </header>
+  
+  <main>
+    <!-- Форма для добавления записи -->
+    <section id="entry-form">
+      <h2>Добавить запись</h2>
+      <form id="financeForm">
+        <input type="text" id="description" placeholder="Описание" required>
+        <input type="number" id="amount" placeholder="Сумма" required>
+        <select id="category" required>
+          <option value="" disabled selected>Выберите категорию</option>
+          <option value="income">Доход</option>
+          <option value="expense">Расход</option>
+        </select>
+        <button type="submit">Добавить</button>
+      </form>
+    </section>
+    
+    <!-- Список записей -->
+    <section id="entries">
+      <h2>Записи</h2>
+      <ul id="entriesList"></ul>
+    </section>
+    
+    <!-- График -->
+    <section id="chartSection">
+      <h2>Аналитика</h2>
+      <canvas id="financeChart"></canvas>
+    </section>
+  </main>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

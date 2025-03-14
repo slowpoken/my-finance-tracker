@@ -36,10 +36,23 @@
     <!-- График -->
     <section id="chartSection">
       <h2>Аналитика</h2>
+      <div class="filters">
+        <label for="dateFilter">Период:</label>
+        <input type="date" id="startDate">
+        <input type="date" id="endDate">
+        <label for="categoryFilter">Категория:</label>
+        <select id="categoryFilter">
+          <option value="all">Все</option>
+          <option value="income">Доход</option>
+          <option value="expense">Расход</option>
+        </select>
+        <button id="applyFilters">Применить</button>
+      </div>
       <div class="chart-container">
         <canvas id="financeChart"></canvas>
       </div>
     </section>
+    
   </main>
 
   <!-- Модальное окно для редактирования записи -->

@@ -67,11 +67,28 @@ financeForm.addEventListener('submit', (e) => {
   renderEntries();
 
   function updateChart() {
-    // Пример: суммируем доходы и расходы
-    let totalIncome = entries.filter(e => e.category === 'income')
-                             .reduce((sum, e) => sum + e.amount, 0);
-    let totalExpense = entries.filter(e => e.category === 'expense')
-                              .reduce((sum, e) => sum + e.amount, 0);
+    // Получите значения фильтров
+    const startDate = document.getElementById('startDate').value;
+    const endDate = document.getElementById('endDate').value;
+    const selectedCategory = document.getElementById('categoryFilter').value;
+  
+    // Фильтрация записей по датам (если заданы) и категории
+    let filteredEntries = entries;
+    if (startDate) {
+      filteredEntries = filteredEntries.filter(e => new Date(e.date) >= new Date(startDate));
+    }
+    if (endDate) {
+      filteredEntries = filteredEntries.filter(e => new Date(e.date) <= new Date(endDate));
+    }
+    if (selectedCategory !== 'all') {
+      filteredEntries = filteredEntries.filter(e => e.category === selectedCategory);
+    }
+  
+    //суммируем доходы и расходы по отфильтрованным данным
+    let totalIncome = filteredEntries.filter(e => e.category === 'income')
+                                     .reduce((sum, e) => sum + e.amount, 0);
+    let totalExpense = filteredEntries.filter(e => e.category === 'expense')
+                                      .reduce((sum, e) => sum + e.amount, 0);
     
     const data = {
       labels: ['Доход', 'Расход'],
@@ -80,8 +97,7 @@ financeForm.addEventListener('submit', (e) => {
         backgroundColor: ['#28a745', '#dc3545']
       }]
     };
-    
-    // Если график уже существует, обновляем данные, иначе создаем новый
+  
     if (financeChart) {
       financeChart.data = data;
       financeChart.update();
@@ -96,6 +112,10 @@ financeForm.addEventListener('submit', (e) => {
       });
     }
   }
+  
+  // Обработчик для применения фильтров
+  document.getElementById('applyFilters').addEventListener('click', updateChart);
+  
   
   updateChart();
 

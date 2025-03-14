@@ -50,4 +50,37 @@ financeForm.addEventListener('submit', (e) => {
   
   // Первоначальное отображение при загрузке страницы
   renderEntries();
+
+  function updateChart() {
+    // Пример: суммируем доходы и расходы
+    let totalIncome = entries.filter(e => e.category === 'income')
+                             .reduce((sum, e) => sum + e.amount, 0);
+    let totalExpense = entries.filter(e => e.category === 'expense')
+                              .reduce((sum, e) => sum + e.amount, 0);
+    
+    const data = {
+      labels: ['Доход', 'Расход'],
+      datasets: [{
+        data: [totalIncome, totalExpense],
+        backgroundColor: ['#28a745', '#dc3545']
+      }]
+    };
+    
+    // Если график уже существует, обновляем данные, иначе создаем новый
+    if (financeChart) {
+      financeChart.data = data;
+      financeChart.update();
+    } else {
+      financeChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    }
+  }
+  
+  updateChart();
   

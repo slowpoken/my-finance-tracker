@@ -1,3 +1,16 @@
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/js/sw.js')
+        .then(registration => {
+          console.log('ServiceWorker зарегистрирован: ', registration);
+        })
+        .catch(error => {
+          console.error('Ошибка при регистрации ServiceWorker: ', error);
+        });
+    });
+  }
+  
+
 let entries = JSON.parse(localStorage.getItem('entries')) || [];
 const financeForm = document.getElementById('financeForm');
 const entriesList = document.getElementById('entriesList');

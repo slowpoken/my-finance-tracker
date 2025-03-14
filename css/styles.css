@@ -63,8 +63,38 @@
 
   .chart-container {
     width: 100%;
-    max-width: 600px; /* или другая подходящая ширина */
-    height: 400px; /* фиксированная высота для корректного отображения графика */
-    margin: 0 auto; /* центрирование контейнера */
+    max-width: 600px; 
+    height: 400px; 
+    margin: 0 auto; 
     position: relative;
   }
+
+  /* Стили для модального окна */
+.modal {
+  display: none; /* По умолчанию скрыто */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}

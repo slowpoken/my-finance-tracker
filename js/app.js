@@ -48,11 +48,13 @@ financeForm.addEventListener('submit', (e) => {
       const li = document.createElement('li');
       li.innerHTML = `
         <strong>${entry.description}</strong> - ${entry.amount} руб. (${entry.category}) <em>${entry.date}</em>
+        <button onclick="openEditModal(${entry.id})">Редактировать</button>
         <button onclick="deleteEntry(${entry.id})">Удалить</button>
       `;
       entriesList.appendChild(li);
     });
   }
+  
   
   function deleteEntry(id) {
     entries = entries.filter(entry => entry.id !== id);

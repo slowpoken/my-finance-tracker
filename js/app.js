@@ -115,4 +115,26 @@ financeForm.addEventListener('submit', (e) => {
     document.getElementById('editModal').style.display = 'none';
   });
   
+//Обработка отправку формы редактирования
+document.getElementById('editForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+  
+    const id = parseInt(document.getElementById('editId').value);
+    const updatedDescription = document.getElementById('editDescription').value;
+    const updatedAmount = parseFloat(document.getElementById('editAmount').value);
+    const updatedCategory = document.getElementById('editCategory').value;
+  
+    // Найти индекс записи в массиве и обновить данные
+    const index = entries.findIndex(e => e.id === id);
+    if (index !== -1) {
+      entries[index].description = updatedDescription;
+      entries[index].amount = updatedAmount;
+      entries[index].category = updatedCategory;
+      localStorage.setItem('entries', JSON.stringify(entries));
+      renderEntries();
+      updateChart();
+    }
+    
+    document.getElementById('editModal').style.display = 'none';
+  });
   

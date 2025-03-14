@@ -28,7 +28,23 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
+
+  .entries-container {
+    max-width: 600px;  /* можно задать нужную ширину */
+    margin: 0 auto;    /* центрирование контейнера по горизонтали */
+    text-align: left;  /* выравнивание текста внутри контейнера по левому краю */
+    padding: 10px;     /* дополнительное пространство по краям, если нужно */
+  }
   
+  /* Если элементы списка требуют дополнительных настроек */
+  #entriesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+
   form input, form select, form button {
     margin: 5px 0;
     padding: 10px;

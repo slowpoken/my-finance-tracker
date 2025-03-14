@@ -29,3 +29,25 @@ financeForm.addEventListener('submit', (e) => {
     }
   });
   
+  function renderEntries() {
+    entriesList.innerHTML = '';
+    entries.forEach(entry => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <strong>${entry.description}</strong> - ${entry.amount} руб. (${entry.category}) <em>${entry.date}</em>
+        <button onclick="deleteEntry(${entry.id})">Удалить</button>
+      `;
+      entriesList.appendChild(li);
+    });
+  }
+  
+  function deleteEntry(id) {
+    entries = entries.filter(entry => entry.id !== id);
+    localStorage.setItem('entries', JSON.stringify(entries));
+    renderEntries();
+    updateChart();
+  }
+  
+  // Первоначальное отображение при загрузке страницы
+  renderEntries();
+  

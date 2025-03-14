@@ -7,6 +7,28 @@ if ('Notification' in window) {
   }
   
 
+  function sendNotification(title, options) {
+    if (Notification.permission === 'granted') {
+      navigator.serviceWorker.getRegistration().then(reg => {
+        if (reg) {
+          reg.showNotification(title, options);
+        }
+      });
+    }
+  }
+  
+  // вызов уведомления:
+  function notifyFinancialGoal() {
+    sendNotification('Напоминание', {
+      body: 'Не забудьте проверить ваши финансовые цели на сегодня!',
+      icon: 'favicon.ico' 
+    });
+  }
+  
+  // Пример: вызов уведомления через 5 секунд для демонстрации
+  setTimeout(notifyFinancialGoal, 5000);
+  
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/js/sw.js')

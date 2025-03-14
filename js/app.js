@@ -1,3 +1,12 @@
+
+// Запрос разрешения у пользователя
+if ('Notification' in window) {
+    Notification.requestPermission().then(permission => {
+      console.log('Разрешение на уведомления:', permission);
+    });
+  }
+  
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/js/sw.js')

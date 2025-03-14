@@ -98,4 +98,17 @@ financeForm.addEventListener('submit', (e) => {
   }
   
   updateChart();
+
+  function openEditModal(id) {
+    const entry = entries.find(e => e.id === id);
+    if (!entry) return;
+  
+    document.getElementById('editId').value = entry.id;
+    document.getElementById('editDescription').value = entry.description;
+    document.getElementById('editAmount').value = entry.amount;
+    document.getElementById('editCategory').value = entry.category;
+  
+    document.getElementById('editModal').style.display = 'block';
+  }
+  
   

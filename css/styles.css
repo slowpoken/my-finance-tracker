@@ -60,4 +60,11 @@
       margin-right: 0;
     }
   }
-  
+
+  .chart-container {
+    width: 100%;
+    max-width: 600px; /* или другая подходящая ширина */
+    height: 400px; /* фиксированная высота для корректного отображения графика */
+    margin: 0 auto; /* центрирование контейнера */
+    position: relative;
+  }

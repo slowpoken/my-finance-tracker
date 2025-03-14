@@ -42,6 +42,8 @@ if ('serviceWorker' in navigator) {
   }
   
 
+
+  
 let entries = JSON.parse(localStorage.getItem('entries')) || [];
 const financeForm = document.getElementById('financeForm');
 const entriesList = document.getElementById('entriesList');

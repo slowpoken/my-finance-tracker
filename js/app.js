@@ -111,4 +111,8 @@ financeForm.addEventListener('submit', (e) => {
     document.getElementById('editModal').style.display = 'block';
   }
   
+  document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('editModal').style.display = 'none';
+  });
+  
   
